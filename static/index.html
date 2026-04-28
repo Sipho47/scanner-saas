@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scanner SaaS</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Passive web security scanner</p>
+          <h1>Scanner SaaS</h1>
+          <p class="lede">
+            Check public URLs for reachability, security headers, TLS status,
+            common open ports, and basic DNS-discovered subdomains.
+          </p>
+        </div>
+        <a class="docs-link" href="/docs">API docs</a>
+      </section>
+
+      <section class="scanner-panel" aria-label="Scanner form">
+        <form id="scan-form" class="scan-form">
+          <label for="url">Target URL</label>
+          <div class="input-row">
+            <input
+              id="url"
+              name="url"
+              type="url"
+              placeholder="https://example.com"
+              value="https://example.com"
+              required
+            />
+            <button id="scan-button" type="submit">Scan</button>
+          </div>
+
+          <label for="ports">Ports</label>
+          <input
+            id="ports"
+            name="ports"
+            type="text"
+            placeholder="80,443,8080,8443"
+            inputmode="numeric"
+          />
+        </form>
+      </section>
+
+      <section id="status" class="status" aria-live="polite"></section>
+
+      <section id="results" class="results" hidden>
+        <div class="summary-grid">
+          <article class="metric">
+            <span>Status</span>
+            <strong id="status-code">-</strong>
+          </article>
+          <article class="metric">
+            <span>Reachable</span>
+            <strong id="reachable">-</strong>
+          </article>
+          <article class="metric">
+            <span>Open Ports</span>
+            <strong id="open-ports">-</strong>
+          </article>
+          <article class="metric">
+            <span>Issues</span>
+            <strong id="issue-count">-</strong>
+          </article>
+        </div>
+
+        <div class="result-layout">
+          <article class="result-card">
+            <div class="section-title">
+              <h2>Target</h2>
+            </div>
+            <dl id="target-list" class="detail-list"></dl>
+          </article>
+
+          <article class="result-card">
+            <div class="section-title">
+              <h2>Security Headers</h2>
+            </div>
+            <dl id="headers-list" class="detail-list"></dl>
+          </article>
+
+          <article class="result-card">
+            <div class="section-title">
+              <h2>SSL</h2>
+            </div>
+            <dl id="ssl-list" class="detail-list"></dl>
+          </article>
+
+          <article class="result-card">
+            <div class="section-title">
+              <h2>Ports</h2>
+            </div>
+            <dl id="ports-list" class="detail-list"></dl>
+          </article>
+
+          <article class="result-card wide">
+            <div class="section-title">
+              <h2>Issues</h2>
+            </div>
+            <ul id="issues-list" class="pill-list"></ul>
+          </article>
+
+          <article class="result-card wide">
+            <div class="section-title">
+              <h2>Subdomains</h2>
+            </div>
+            <ul id="subdomains-list" class="subdomain-list"></ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
