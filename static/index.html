@@ -21,6 +21,40 @@
       </section>
 
       <section class="scanner-panel" aria-label="Scanner form">
+        <div class="account-bar">
+          <div>
+            <span id="account-status">Not signed in</span>
+            <strong id="account-plan">Free</strong>
+          </div>
+          <button id="logout-button" class="secondary-button" type="button" hidden>
+            Log out
+          </button>
+        </div>
+
+        <form id="auth-form" class="auth-form">
+          <input
+            id="auth-email"
+            name="email"
+            type="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            required
+          />
+          <input
+            id="auth-password"
+            name="password"
+            type="password"
+            placeholder="Password"
+            autocomplete="current-password"
+            minlength="8"
+            required
+          />
+          <button id="login-button" type="submit">Log in</button>
+          <button id="register-button" class="secondary-button" type="button">
+            Register
+          </button>
+        </form>
+
         <form id="scan-form" class="scan-form">
           <label for="url">Target URL</label>
           <div class="input-row">
@@ -65,6 +99,10 @@
           <article class="metric">
             <span>Issues</span>
             <strong id="issue-count">-</strong>
+          </article>
+          <article class="metric">
+            <span>Scan ID</span>
+            <strong id="scan-id">-</strong>
           </article>
         </div>
 
@@ -111,6 +149,23 @@
             <ul id="subdomains-list" class="subdomain-list"></ul>
           </article>
         </div>
+      </section>
+
+      <section class="billing-panel" aria-label="Billing plans">
+        <div class="section-title">
+          <h2>Plans</h2>
+        </div>
+        <div id="plans-list" class="plans-grid"></div>
+      </section>
+
+      <section class="history-panel" aria-label="Recent scans">
+        <div class="section-title">
+          <h2>Recent Scans</h2>
+          <button id="refresh-history" class="secondary-button" type="button">
+            Refresh
+          </button>
+        </div>
+        <ul id="history-list" class="history-list"></ul>
       </section>
     </main>
 

@@ -100,7 +100,10 @@ button {
 
 .scanner-panel,
 .result-card,
-.metric {
+.metric,
+.history-panel,
+.billing-panel,
+.plan-card {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--panel);
@@ -109,6 +112,38 @@ button {
 
 .scanner-panel {
   padding: 18px;
+}
+
+.account-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.account-bar div {
+  display: grid;
+  gap: 4px;
+}
+
+.account-bar span {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.account-bar strong {
+  text-transform: capitalize;
+}
+
+.auth-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto auto;
+  gap: 10px;
+  margin-bottom: 18px;
 }
 
 .scan-form {
@@ -152,6 +187,14 @@ button {
   color: #fff;
 }
 
+.secondary-button {
+  min-width: 92px;
+  min-height: 38px;
+  padding: 0 14px;
+  background: #eef6f3;
+  color: var(--accent-dark);
+}
+
 button:disabled {
   cursor: wait;
   opacity: 0.72;
@@ -170,7 +213,7 @@ button:disabled {
 
 .summary-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 12px;
   margin-bottom: 14px;
 }
@@ -285,6 +328,86 @@ dd {
   color: var(--good);
 }
 
+.billing-panel,
+.history-panel {
+  margin-top: 14px;
+  padding: 18px;
+}
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.plan-card {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  box-shadow: none;
+}
+
+.plan-card h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.plan-card strong {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.plan-card p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.plan-note {
+  color: var(--warn);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.history-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.history-item {
+  display: grid;
+  width: 100%;
+  min-height: auto;
+  justify-items: start;
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  background: #fbfdfc;
+  color: var(--ink);
+  text-align: left;
+}
+
+.history-item strong,
+.history-item span {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.history-item span,
+.empty-history {
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.empty-history {
+  padding: 8px 0;
+}
+
 @media (max-width: 760px) {
   .shell {
     width: min(100% - 22px, 1120px);
@@ -292,7 +415,8 @@ dd {
   }
 
   .hero,
-  .input-row {
+  .input-row,
+  .auth-form {
     grid-template-columns: 1fr;
   }
 
@@ -301,12 +425,19 @@ dd {
   }
 
   .docs-link,
-  button {
+  button,
+  .account-bar {
     width: 100%;
   }
 
+  .account-bar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
   .summary-grid,
-  .result-layout {
+  .result-layout,
+  .plans-grid {
     grid-template-columns: 1fr;
   }
 
